@@ -15,7 +15,7 @@ public enum ShapeColor {
     PINK(Color.PINK),
     RED(Color.RED),
     WHITE(Color.WHITE),
-    YELLOW(Color.WHITE);
+    YELLOW(Color.YELLOW);
 
     public final Color value;
     private ShapeColor(Color c) {

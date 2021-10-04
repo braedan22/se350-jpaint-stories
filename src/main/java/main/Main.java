@@ -54,5 +54,9 @@ public class Main {
         //graphics2d.drawRect(7, 8, 210, 410);
 
         // - End example
+        while (true){
+            Thread.sleep(30);
+            paintCanvas.paintComponent(graphics2d);
+        }
     }
 }

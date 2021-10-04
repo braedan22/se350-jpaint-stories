@@ -2,6 +2,8 @@ package view.gui;
 
 import javax.swing.JComponent;
 import java.awt.*;
+
+import model.picture.Picture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +30,7 @@ public class PaintCanvas extends JComponent {
      * It you want to force a paint event, call aPaintCanvas.repaint()
      */
     public void paintComponent(Graphics graphics) {
+        Picture.draw(graphics);
 //        Graphics2D graphics2d = (Graphics2D) graphics;
 //
 //        // - Begin example: remove after you understand it
