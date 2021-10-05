@@ -29,5 +29,6 @@ public class EventConnectorImpl implements EventConnector {
         uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, () -> userChoices.setActiveShadingType());
         uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, () -> userChoices.setActiveStartAndEndPointMode());
         uiModule.addEvent(EventName.UNDO, CommandHistory::undo);
+        uiModule.addEvent(EventName.REDO, CommandHistory::redo);
     }
 }

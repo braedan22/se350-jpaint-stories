@@ -4,11 +4,7 @@ import controller.EventConnector;
 import controller.EventConnectorImpl;
 import controller.KeyboardInterface;
 import controller.MouseHandler;
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Stroke;
-
 import controller.command.CommandController;
 import model.interfaces.UserChoices;
 import model.persistence.UserChoicesImpl;
@@ -29,7 +25,7 @@ public class Main {
         KeyboardInterface keys = new KeyboardInterface(paintCanvas, appState);
         keys.setup();
         CommandController commandController = new CommandController(appState);
-        MouseHandler mouse = new MouseHandler(commandController);
+        MouseHandler mouse = new MouseHandler(commandController, appState);
         paintCanvas.addMouseListener(mouse);
         controller.setup();
 
@@ -37,25 +33,9 @@ public class Main {
 
         Graphics2D graphics2d = paintCanvas.getGraphics2D();
 
-        // - Begin example: remove after you understand it
-
-        //graphics2d.setColor(Color.GREEN);
-        //graphics2d.fillRect(12, 13, 200, 400);
-
-        // Outlined rectangle
-        //graphics2d.setStroke(new BasicStroke(5));
-        //graphics2d.setColor(Color.BLUE);
-        //graphics2d.drawRect(12, 13, 200, 400);
-
-        // Selected Shape
-        //Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        //graphics2d.setStroke(stroke);
-        //graphics2d.setColor(Color.BLACK);
-        //graphics2d.drawRect(7, 8, 210, 410);
-
-        // - End example
         while (true){
-            Thread.sleep(30);
+            Thread.sleep(5);
+            paintCanvas.repaint();
             paintCanvas.paintComponent(graphics2d);
         }
     }

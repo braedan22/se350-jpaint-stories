@@ -4,9 +4,6 @@ import controller.interfaces.Command;
 import controller.interfaces.Undoable;
 import model.interfaces.UserChoices;
 import model.picture.Point;
-import view.gui.PaintCanvas;
-
-import java.awt.*;
 
 public class CommandController {
     private UserChoices userChoices;
