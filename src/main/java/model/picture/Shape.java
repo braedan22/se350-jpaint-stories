@@ -17,4 +17,5 @@ public interface Shape {
 
     Point getEnd();
 
+    Boolean intersects(Point p1, Point p2);
 }

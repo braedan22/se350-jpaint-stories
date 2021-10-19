@@ -3,36 +3,37 @@ package model.picture;
 import model.ShapeType;
 import java.awt.*;
 
-public class Rectangle implements Shape{
-    private ShapeType shapeType = ShapeType.RECTANGLE;
+public class Triangle implements Shape{
+    private ShapeType shapeType = ShapeType.TRIANGLE;
     private Color color;
     private Point start;
     private Point end;
-    private Point topLeft;
+    private int[] xPoints;
+    private int[] yPoints;
+
     private int left;
     private int right;
     private int top;
     private int bottom;
-    private int width;
-    private int height;
 
-    public Rectangle(Color color, Point start, Point end){
+    public Triangle(Color color, Point start, Point end){
         this.color = color;
         this.start = start;
         this.end = end;
+        this.xPoints = new int[]{end.getX(), (start.getX()+ end.getX())/2,    start.getX()};
+        this.yPoints = new int[]{end.getY(), start.getY(),                    end.getY()};
+
         this.right = (Math.max(start.getX(), end.getX()));
         this.left = (Math.min(start.getX(), end.getX()));
         this.bottom = (Math.max(start.getY(), end.getY()));
         this.top = (Math.min(start.getY(), end.getY()));
-        this.topLeft = new Point(left, top);
-        this.width = right - left;
-        this.height = bottom - top;
     }
+
 
     @Override
     public void draw(Graphics graphics) {
         graphics.setColor(color);
-        graphics.fillRect(topLeft.getX(), topLeft.getY(), width, height);
+        graphics.fillPolygon(xPoints, yPoints, 3);
     }
 
     @Override

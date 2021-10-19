@@ -37,6 +37,10 @@ public class MouseHandler extends MouseAdapter {
         log.debug("End " + e.getX() + " " + e.getY());
         if (userChoices.getActiveMouseMode().equals(MouseMode.DRAW)) {
             commandController.onDraw(start, end);
+        } else if (userChoices.getActiveMouseMode().equals(MouseMode.SELECT)) {
+            commandController.onSelect(start, end);
+        } else if (userChoices.getActiveMouseMode().equals(MouseMode.MOVE)) {
+            commandController.onMove(start, end);
         }
     }
 }

@@ -15,7 +15,7 @@ import view.interfaces.GuiWindow;
 import view.interfaces.UiModule;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         PaintCanvas paintCanvas = new PaintCanvas();
         GuiWindow guiWindow = new GuiWindowImpl(paintCanvas);
         UiModule uiModule = new Gui(guiWindow);
@@ -24,19 +24,10 @@ public class Main {
 
         KeyboardInterface keys = new KeyboardInterface(paintCanvas, appState);
         keys.setup();
-        CommandController commandController = new CommandController(appState);
+
+        CommandController commandController = new CommandController(paintCanvas, appState);
         MouseHandler mouse = new MouseHandler(commandController, appState);
         paintCanvas.addMouseListener(mouse);
         controller.setup();
-
-        Thread.sleep(500);
-
-        Graphics2D graphics2d = paintCanvas.getGraphics2D();
-
-        while (true){
-            Thread.sleep(5);
-            paintCanvas.repaint();
-            paintCanvas.paintComponent(graphics2d);
-        }
     }
 }

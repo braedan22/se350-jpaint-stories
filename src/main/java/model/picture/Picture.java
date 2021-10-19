@@ -20,4 +20,14 @@ public class Picture {
             shape.draw(graphics);
         }
     }
+
+    public static List<Shape> select(Point start, Point end){
+        List<Shape> output = new ArrayList<>();
+        for(Shape shape:shapes) {
+            if(shape.intersects(start, end)){
+                output.add(shape);
+            }
+        }
+        return output;
+    }
 }

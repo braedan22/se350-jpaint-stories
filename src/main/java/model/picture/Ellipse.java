@@ -3,8 +3,8 @@ package model.picture;
 import model.ShapeType;
 import java.awt.*;
 
-public class Rectangle implements Shape{
-    private ShapeType shapeType = ShapeType.RECTANGLE;
+public class Ellipse implements Shape{
+    private ShapeType shapeType = ShapeType.ELLIPSE;
     private Color color;
     private Point start;
     private Point end;
@@ -16,7 +16,7 @@ public class Rectangle implements Shape{
     private int width;
     private int height;
 
-    public Rectangle(Color color, Point start, Point end){
+    public Ellipse(Color color, Point start, Point end){
         this.color = color;
         this.start = start;
         this.end = end;
@@ -29,10 +29,11 @@ public class Rectangle implements Shape{
         this.height = bottom - top;
     }
 
+
     @Override
     public void draw(Graphics graphics) {
         graphics.setColor(color);
-        graphics.fillRect(topLeft.getX(), topLeft.getY(), width, height);
+        graphics.fillOval(topLeft.getX(), topLeft.getY(), width, height);
     }
 
     @Override
