@@ -2,6 +2,7 @@ package controller.command;
 
 import controller.interfaces.Command;
 import controller.interfaces.Undoable;
+import model.ShapeShadingType;
 import model.ShapeType;
 import model.picture.*;
 import model.picture.Point;
@@ -28,16 +29,18 @@ public class CreateMoveCommand implements Command, Undoable{
 
         for(Shape oldShape:oldShapes){
             ShapeType shapeType = oldShape.getShapeType();
-            Color color = oldShape.getColor();
+            Color primary = oldShape.getPrimary();
+            Color secondary = oldShape.getSecondary();
+            ShapeShadingType treatment = oldShape.getTreatment();
             Point start = new Point(oldShape.getStart().getX()+deltaX, oldShape.getStart().getY()+deltaY);
             Point end = new Point(oldShape.getEnd().getX()+deltaX, oldShape.getEnd().getY()+deltaY);
 
             if (oldShape.getShapeType().equals(ShapeType.RECTANGLE)) {
-                newShapes.add(new Rectangle(color, start, end));
+                newShapes.add(new Rectangle(start, end, primary, secondary, treatment));
             } else if (shapeType.equals(ShapeType.ELLIPSE)) {
-                newShapes.add(new Ellipse(color, start, end));
+                newShapes.add(new Ellipse(start, end, primary, secondary, treatment));
             } else if (shapeType.equals(ShapeType.TRIANGLE)) {
-                newShapes.add(new Triangle(color, start, end));
+                newShapes.add(new Triangle(start, end, primary, secondary, treatment));
             }
 
         }

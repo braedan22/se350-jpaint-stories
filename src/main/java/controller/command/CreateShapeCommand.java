@@ -2,6 +2,7 @@ package controller.command;
 
 import controller.interfaces.Command;
 import controller.interfaces.Undoable;
+import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.UserChoices;
 import model.picture.*;
@@ -18,13 +19,16 @@ public class CreateShapeCommand implements Command, Undoable {
     public CreateShapeCommand(PaintCanvas canvas, UserChoices userChoices, Point start, Point end) {
         this.canvas = canvas;
         ShapeType shapeType = userChoices.getActiveShapeType();
-        Color color = userChoices.getActivePrimaryColor().value;
+        Color primary = userChoices.getActivePrimaryColor().value;
+        Color secondary = userChoices.getActiveSecondaryColor().value;
+        ShapeShadingType treatment = userChoices.getActiveShapeShadingType();
+
         if (shapeType.equals(ShapeType.RECTANGLE)) {
-            shape = new Rectangle(color, start, end);
+            shape = new Rectangle(start, end, primary, secondary, treatment);
         } else if (shapeType.equals(ShapeType.ELLIPSE)) {
-            shape = new Ellipse(color, start, end);
+            shape = new Ellipse(start, end, primary, secondary, treatment);
         } else if (shapeType.equals(ShapeType.TRIANGLE)) {
-            shape = new Triangle(color, start, end);
+            shape = new Triangle(start, end, primary, secondary, treatment);
         }
     }
 
