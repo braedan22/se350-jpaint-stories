@@ -33,5 +33,6 @@ public class EventConnectorImpl implements EventConnector {
         uiModule.addEvent(EventName.REDO, CommandHistory::redo);
         uiModule.addEvent(EventName.COPY, CommandController::onCopy);
         uiModule.addEvent(EventName.PASTE, CommandController::onPaste);
+        uiModule.addEvent(EventName.DELETE, CommandController::onDelete);
     }
 }

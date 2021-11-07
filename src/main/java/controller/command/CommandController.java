@@ -37,6 +37,13 @@ public class CommandController {
         CommandHistory.add((Undoable) command);
     }
 
+    public static void onDelete(){
+        List<Shape> selected = Selected.get();
+        Command command = new CreateDeleteCommand(canvas, selected);
+        command.run();
+        CommandHistory.add((Undoable) command);
+    }
+
     public static void onCopy(){
         List<Shape> copied = Selected.get();
         Copied.set(copied);
